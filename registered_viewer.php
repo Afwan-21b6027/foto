@@ -108,6 +108,7 @@
             $images = glob("uploads/*.*"); // Get all files in uploads directory
             $imageData = array(); // Array to store image data
 
+            // TODO: Have a database to upload the caption under the user
             if (isset($_POST['caption'])) {
                 $photo_caption = $_POST['caption'];
             } else {
