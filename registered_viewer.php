@@ -1,3 +1,30 @@
+<?php
+require('db-conn.php');
+
+$table_name = "uploaded_images";
+$result = mysqli_query($conn, "SHOW TABLES LIKE '$table_name'");
+$tableExists = mysqli_num_rows($result) > 0;
+
+if (!$tableExists) {
+    $sql = "CREATE TABLE $table_name (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        file_name VARCHAR(255) NOT NULL,
+        caption VARCHAR(255) NOT NULL,
+        upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script> 
+            alert('A table was made successfully!'); 
+            </script>";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
+
+}
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
