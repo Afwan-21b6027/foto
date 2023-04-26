@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/020020905b.js" crossorigin="anonymous"></script>
+    <title>Archive Page</title>
+    <link rel="stylesheet" href="/css/archive_page.css">
+</head>
+<body>
+    <!-- For the top part of the user profile -->
+    <div class="grid-container-top">
+        <div class="grid-item-button">
+            <button id="btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                <a style="text-decoration: none; color: #fff; font-size: 15px; font-weight: 500;" rel="Back" href="/html/registered_viewer.html" onclick="history.go(-1)">Back</a>
+            </button>
+        </div>
+
+        <div class="grid-item-text">
+            <p>Only you can see your memories and archived posts unless you choose to share them.</p>
+        </div>
+
+        <div class="grid-item-nav">
+            
+            <button id="btn1"><i class="fa-solid fa-share"></i> Re-Share</button>
+            <button id="btn1"><i class="fa-solid fa-trash"></i> Delete</button>
+        </div>
+    </div>
+    <!-- For the polaroids content -->
+    <div class="grid-container-bottom">
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="Santorini">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Santorini</p>
+            </div>
+        </div>
+
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg1" src="https://images.unsplash.com/photo-1677607240655-3bc840ede271?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Mountain">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Mountain</p>
+            </div>
+        </div>
+
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg3" src="https://images.unsplash.com/photo-1676474048599-ada5d9ceaa24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Waves">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Waves</p>
+            </div>
+        </div>
+
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg4" src="https://images.unsplash.com/photo-1677654469268-3e9b2ab99d0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="Cool" title="Cool">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Cool</p>
+            </div>
+        </div>
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg5" src="https://images.unsplash.com/photo-1677177871850-5dc0f6dbfe76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Sunset" title="Sunset">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Sunset</p>
+            </div>
+        </div>
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg6" src="https://images.unsplash.com/photo-1677383287914-621482c71074?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80" alt="Bird" title="Bird">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Bird</p>
+            </div>
+        </div>
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg7" src="https://images.unsplash.com/photo-1676714815667-612ecce49035?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Spongebob" title="Spongebob">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Spongebob</p>
+            </div>
+        </div>
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg8" src="https://images.unsplash.com/photo-1676947615694-e56d12b4f1c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="Flag" title="Flag">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>Flag</p>
+            </div>
+        </div>
+        <div class="polaroid">
+            <div class="pol-img">
+                <img id="myImg9" src="https://images.unsplash.com/photo-1677065286317-f27a1e2458de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80" alt="What You Lookin At" title="What You Lookin At">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <div class="caption">
+                <p>What You Lookin At</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("myModal");
+    
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+        
+        var img = document.getElementById("myImg1");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        var img = document.getElementById("myImg3");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        var img = document.getElementById("myImg4");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        var img = document.getElementById("myImg5");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+        var img = document.getElementById("myImg6");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+        var img = document.getElementById("myImg7");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        var img = document.getElementById("myImg8");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        var img = document.getElementById("myImg9");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        var span = document.getElementsByClassName("close")[0];
+        
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

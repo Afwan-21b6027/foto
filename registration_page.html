@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/registration_page.css">
+      <link rel="stylesheet" href="/css/captcha.css">
+      <script src="https://kit.fontawesome.com/020020905b.js" crossorigin="anonymous"></script>
+      <title>Registration Form</title>
+   </head>
+   
+   <body>
+      <div class="wrapper">
+
+         <div class="title-text">
+
+            <div class="title login">
+               Login Form
+            </div>
+            
+            <div class="title signup">
+               Signup Form
+            </div>
+
+         </div>
+
+         <div class="form-container">
+
+            <div class="slide-controls">
+               <input type="radio" name="slide" id="login" checked>
+               <input type="radio" name="slide" id="signup">
+               <label for="login" class="slide login">Login</label>
+               <label for="signup" class="slide signup">Signup</label>
+               <div class="slider-tab"></div>
+            </div>
+
+            <div class="form-inner">
+               <form action="#" class="login">
+
+                  <div class="field">
+                    <!-- <i class="fa-regular fa-at"></i> -->
+                    <input type="text" placeholder="Email Address" required>
+                  </div>
+
+                  <div class="field">
+                    <!-- <i class="fa-solid fa-key"></i> -->
+                    <input type="password" placeholder="Password" required>
+                  </div>
+
+                  <div class="pass-link">
+                     Forgot password? <a href="forgotpwd.html">Click Here</a>
+                  </div>
+
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Submit">
+                  </div>
+
+                  <div class="signup-link">
+                     Not a member? <a href="">Signup now</a>
+                  </div>
+
+               </form>
+
+               <form action="#" class="signup">
+
+                  <div class="field">
+                     <input type="text" placeholder="Email Address" required>
+                  </div>
+
+                  <div class="field">
+                     <input type="password" placeholder="Password" required>
+                  </div>
+
+                  <div class="field">
+                     <input type="password" placeholder="Confirm password" required>
+                  </div>
+
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Submit">
+                  </div>
+
+               </form>
+
+            </div>
+
+         </div>
+
+      </div>
+
+      <div class="container"> 
+         <input type="checkbox" id="MyCheckbox" onclick="PopupAppear()"> <label>I am not a robot</label>
+
+         <div class="popup" id="popup">
+            <div class="overlay"></div>
+            <label class="btn-close" onclick="PopupClose()">X</label>
+
+            <h1 id="captchaHeading"></h1>
+
+            <div id="captchaBackground">
+                <canvas id="captcha">captcha text</canvas>
+                <input id="textBox" type="text" name="text">
+                <div id="buttons">
+                    <input id="submitButton" type="submit">
+                    <button id="refreshButton" type="submit">Refresh</button>
+                </div>
+                <span id="output"></span>
+            </div>
+
+         </div>
+      </div>
+   
+      <script src="/js/captcha.js"></script>
+      <script src="/js/popup-captcha.js"></script>
+      <script src="/js/regis-login-toggle.js"></script>
+
+   </body>
+</html>
