@@ -18,7 +18,7 @@
             </div>
 
             <div class="caption-input-div">
-                <h2>Image Name</h2>
+                <h2>Caption</h2>
                 <input type="text" name="caption" id="upload-caption">
             </div>
             
@@ -41,7 +41,7 @@
                     font-size: 15px; 
                     font-weight: 500;" 
                     rel="Archive"
-                    href="3.Archive_Page.html" onclick="history.go(-1)">Archive</a>
+                    href="archive_page.html" onclick="history.go(-1)">Archive</a>
                 </button>
 
                 <button class="btn" id="home-btn">
@@ -52,7 +52,7 @@
                     font-size: 15px; 
                     font-weight: 500;" 
                     rel="Home"
-                    href="Foto_Main_Page.php" onclick="history.go(-1)">Home</a>
+                    href="index.php" onclick="history.go(-1)">Home</a>
                 </button>
 
                 <button class="btn" id="logout-btn">
@@ -107,6 +107,12 @@
             <?php
             $images = glob("uploads/*.*"); // Get all files in uploads directory
             $imageData = array(); // Array to store image data
+
+            if (isset($_POST['caption'])) {
+                $photo_caption = $_POST['caption'];
+            } else {
+                $photo_caption = "A Photo";
+            }
         
             // Loop through each image and get its upload time
             foreach ($images as $image) {
@@ -125,11 +131,11 @@
                         <div id="myModal" class="modal">
                             <span class="close">&times;</span>
                             <img class="modal-content" id="img01">
-                            <div id="caption">'. $caption.'</div>
+                            <div id="caption">'. $photo_caption.'</div>
                         </div>
                     </div>
                     <div class="caption">
-                        <p>' . $caption . '</p>
+                        <p>' . $photo_caption . '</p>
                     </div>
                 </div>';
             }
