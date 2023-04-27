@@ -177,39 +177,39 @@ mysqli_close($conn);
 
 <?php
 // ! Form = submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file-upload"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file-upload"]) ) {
     $target_dir = "uploads/"; // Directory where files will be uploaded
     $target_file = $target_dir.time().".".strtolower(pathinfo($_FILES["file-upload"]["name"], PATHINFO_EXTENSION));
-    $uploadOk = 1;
+    $upload_ok = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // ! File = Image
     $check = getimagesize($_FILES["file-upload"]["tmp_name"]);
     if ($check === false) {
         echo "File is not an image.";
-        $uploadOk = 0;
+        $upload_ok = 0;
     }
 
     // ! File = Exists
     if (file_exists($target_file)) {
         // echo "File already exists.";
-        $uploadOk = 0;
+        $upload_ok = 0;
     }
 
     // ! File Size
     if ($_FILES["file-upload"]["size"] > 5000000) { // 5MB
         echo "File size exceeds maximum allowed.";
-        $uploadOk = 0;
+        $upload_ok = 0;
     }
 
     // ! File Format
     if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
         echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
-        $uploadOk = 0;
+        $upload_ok = 0;
     }
 
     // ! if(pass){upload}
-    if ($uploadOk == 1) {
+    if ($upload_ok == 1) {
         if (move_uploaded_file($_FILES["file-upload"]["tmp_name"], $target_file)) {
             echo "<script> 
             alert('File uploaded successfully!'); 
