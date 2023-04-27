@@ -55,6 +55,10 @@ mysqli_close($conn);
         </form>
     </div>
 
+    <div id="popup-delete">
+        <!-- TODO: Add function to collect all the pictures -->
+    </div>
+
     <!-- Header -->
     <div id="grid-all-contents">
         <div class="grid-container-top">
@@ -131,15 +135,11 @@ mysqli_close($conn);
         <div class="grid-container-bottom">
 
             <?php
-            $images = glob("uploads/*.*"); // Get all files in uploads directory
-            $imageData = array(); // Array to store image data
 
-            // TODO: Have a database to upload the caption under the user
-            if (isset($_POST['caption'])) {
-                $photo_caption = $_POST['caption'];
-            } else {
-                $photo_caption = "A Photo";
-            }
+            $dir = "uploads";
+            // Collects files in directory and Array to store image data 
+            $images = glob("$dir/*.*"); 
+            $imageData = array();
         
             // Loop through each image and get its upload time
             foreach ($images as $image) {
@@ -154,7 +154,7 @@ mysqli_close($conn);
                 echo '
                 <div class="polaroid">
                     <div class="pol-img">
-                        <img id="myImg1" src="' . $image . '" alt="Mountain">
+                        <img id="myImg1" src="' . $image . '" alt="' .$photo_caption. '">
                         <div id="myModal" class="modal">
                             <span class="close">&times;</span>
                             <img class="modal-content" id="img01">
@@ -166,6 +166,10 @@ mysqli_close($conn);
                     </div>
                 </div>';
             }
+            
+            function getUsernameForImage($image) {
+                // replace this function with our own implementation that returns the username associated with the given image file
+                }
             ?>
         </div>
     </div>
@@ -180,36 +184,36 @@ mysqli_close($conn);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file-upload"]) ) {
     $target_dir = "uploads/"; // Directory where files will be uploaded
     $target_file = $target_dir.time().".".strtolower(pathinfo($_FILES["file-upload"]["name"], PATHINFO_EXTENSION));
-    $upload_ok = 1;
+    $upload_ok = true;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // ! File = Image
     $check = getimagesize($_FILES["file-upload"]["tmp_name"]);
     if ($check === false) {
         echo "File is not an image.";
-        $upload_ok = 0;
+        $upload_ok = false;
     }
 
     // ! File = Exists
     if (file_exists($target_file)) {
         // echo "File already exists.";
-        $upload_ok = 0;
+        $upload_ok = false;
     }
 
     // ! File Size
     if ($_FILES["file-upload"]["size"] > 5000000) { // 5MB
         echo "File size exceeds maximum allowed.";
-        $upload_ok = 0;
+        $upload_ok = false;
     }
 
     // ! File Format
     if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
         echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
-        $upload_ok = 0;
+        $upload_ok = false;
     }
 
     // ! if(pass){upload}
-     if ($upload_ok == 1) {
+     if ($upload_ok == true) {
         if (move_uploaded_file($_FILES["file-upload"]["tmp_name"], $target_file)) {
             echo "<script> 
             alert('File uploaded successfully!'); 
@@ -217,7 +221,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file-upload"]) ) {
 
             include ('db-conn.php');
 
-            // Set caption variable
             if (isset($_POST['caption'])) {
                 $photo_caption = $_POST['caption'];
             } else {
