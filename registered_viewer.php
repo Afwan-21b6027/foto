@@ -9,8 +9,7 @@ if (!$tableExists) {
     $sql = "CREATE TABLE $table_name (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         file_name VARCHAR(255) NOT NULL,
-        caption VARCHAR(255) NOT NULL,
-        upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        caption VARCHAR(255) NOT NULL
     )";
 
     if (mysqli_query($conn, $sql)) {
