@@ -33,6 +33,7 @@ mysqli_close($conn);
     <script src="https://kit.fontawesome.com/020020905b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="registered_viewer.css">
     <title>Registered Viewer Page</title>
+
 </head>
 <body>
     <!-- Popup - Upload Function -->
@@ -118,7 +119,7 @@ mysqli_close($conn);
                     Upload
                 </button>
 
-                <button id="delete-btn" class="navigation-btn">
+                <button id="delete-btn" onclick="showDelete()" class="navigation-btn">
                     <i class="fa-solid fa-trash"></i> 
                     Delete
                 </button>
@@ -134,7 +135,7 @@ mysqli_close($conn);
         <!-- ! Main Contents - Images -->
         <div class="grid-container-bottom">
 
-            <?php
+        <?php
         // Establish a database connection
         $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -144,7 +145,7 @@ mysqli_close($conn);
         }
 
         // SQL SELECT statement to retrieve caption column data
-        $sql = "SELECT file_name,caption FROM uploaded_images";
+        $sql = "SELECT id,file_name,caption FROM uploaded_images";
 
         $result = $conn->query($sql);
 
@@ -164,6 +165,10 @@ mysqli_close($conn);
                     </div>
                     <div class="caption">
                         <p>' . $caption23 . '</p>
+                        <form method="post" action="delete.php">
+                            <input type="hidden" name="delete_id" value="'.$row["id"].'">
+                            <button type="submit">Delete</button>
+                        </form>
                     </div>
                 </div>';
             }
@@ -178,6 +183,8 @@ mysqli_close($conn);
             ?>
         </div>
     </div>
+
+    
     
     <script src="upload-popup.js"></script>
 
