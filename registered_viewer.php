@@ -56,7 +56,7 @@ mysqli_close($conn);
     </div>
 
     <div id="popup-delete">
-        <!-- TODO: Add function to collect all the pictures -->
+        
     </div>
 
     <!-- Header -->
@@ -166,7 +166,7 @@ mysqli_close($conn);
                     </div>
                 </div>';
             }
-            
+
             function getUsernameForImage($image) {
                 // replace this function with our own implementation that returns the username associated with the given image file
                 }
