@@ -209,11 +209,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file-upload"]) ) {
     }
 
     // ! if(pass){upload}
-    if ($upload_ok == 1) {
+     if ($upload_ok == 1) {
         if (move_uploaded_file($_FILES["file-upload"]["tmp_name"], $target_file)) {
             echo "<script> 
             alert('File uploaded successfully!'); 
             </script>";
+
+            include ('db-conn.php');
+
+            // Set caption variable
+            if (isset($_POST['caption'])) {
+                $photo_caption = $_POST['caption'];
+            } else {
+                $photo_caption = "A Photo";
+            }
+
+            // Prepare and bind SQL statement
+            $stmt = mysqli_prepare($conn, "INSERT INTO uploaded_images (file_name, caption) VALUES (?, ?)");
+            mysqli_stmt_bind_param($stmt, "ss",$target_file, $photo_caption);
+
+            // Execute SQL statement
+            mysqli_stmt_execute($stmt);
+
+            // Close connection
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+
         } else {
             echo "Error uploading file.";
         }
