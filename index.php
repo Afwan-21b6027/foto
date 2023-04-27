@@ -6,8 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
+
     <style>
+        .enlarged-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        cursor: zoom-out;
+    }
         *{
             padding: 0;
             margin: 0;
@@ -390,6 +401,7 @@
                 font-family: 'Times New Roman', Times, serif;
                 font-weight: 1000;
             } */
+            
         }
 
         [class*="col"]{
@@ -507,9 +519,9 @@
         <div class="grid-container-sidenav button">  
             <ul >
                 <!-- <li><a href="Mainpage.html">Home</a></li> -->
-                <li><a style="text-decoration: none; color: #000;" rel="User Profile" href="user_profile.php">User Profile</a></li>
-                <li><a style="text-decoration: none; color: #000;" rel="About Us" href="about_us.html">About Us</a></li>
-                <li><a style="text-decoration: none; color: #000;" rel="Logout" href="registration_page.html">Logout</a></li>
+                <li><a style="text-decoration: none; color: #000;" rel="User Profile" href="1.User_Profile.php">User Profile</a></li>
+                <li><a style="text-decoration: none; color: #000;" rel="About Us" href="aboutus.html">About Us</a></li>
+                <li><a style="text-decoration: none; color: #000;" rel="Logout" href="regpg.html">Logout</a></li>
             </ul>
             
         </div>
@@ -548,40 +560,31 @@
             <hr style="background-color: #595552; height: 1px; border-color: 2px solid#595552; margin-left: 20px; margin-right: 20px;">
         <!-- This is where the polaroids will be uploaded -->
             <div class="grid-container-maincont">
-
                 <?php
-                // Set directory path
-                $dir = "uploads";
-
-                // Get all files in uploads directory
-                $images = glob("$dir/*.*");
-
-                // Array to store image data
-                $imageData = array();
+                $images = glob("uploads/*.*"); // Get all files in uploads directory
+                $imageData = array(); // Array to store image data
             
                 // Loop through each image and get its upload time
                 foreach ($images as $image) {
-                    $imageData[$image] = filemtime($image);
+                    $imageData[$image] = filemtime($image); // Store image data with file path as key and upload time as value
                 }
             
                 // Sort the image data array by upload time in descending order
                 arsort($imageData);
-
-                //  Output HTML for each image
                 foreach ($imageData as $image => $caption) {
-                    printf('
-                        <div class="grid-item">
-                            <img src="%s">
-                            <div style="text-align: center;">
-                                <a href="user_profile.html">
-                                    <div class="user_profile_info">
-                                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">User Profile
-                                    </div>
-                                </a>
-                            </div>
-                        </div>',
-                        $image
-                    );
+                    echo '
+                    <div class="grid-item">
+                        <a href="#" class="enlarge-image">
+                            <img src="' . $image . '" class="thumbnail">
+                        </a>
+                        <div style="text-align: center;">
+                            <a href="1.User_Profile.php">
+                                <div class="user_profile_info">
+                                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">User Profile
+                                </div>
+                            </a>
+                        </div>
+                    </div>';
                 }
                 ?>
                 
@@ -672,5 +675,32 @@
             <a href="#page2">Tset</a>
         </div> -->
     </div>
+    <script>
+    // Get all the anchor tags with class "enlarge-image"
+    const imageLinks = document.querySelectorAll('.enlarge-image');
+
+    // Attach an event listener to each anchor tag
+    imageLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault(); // Prevent the link from navigating to a new page
+
+            // Create a new image element and set its source to the thumbnail's source
+            const thumbnail = event.target.closest('.thumbnail');
+            const enlargedImage = new Image();
+            enlargedImage.src = thumbnail.src;
+
+            // Add a class to the image element to style it
+            enlargedImage.classList.add('enlarged-image');
+
+            // Append the image element to the document body
+            document.body.appendChild(enlargedImage);
+
+            // Attach an event listener to the image element to remove it when clicked
+            enlargedImage.addEventListener('click', event => {
+                event.target.remove();
+            });
+        });
+    });
+</script>    
 </body>
 </html>
