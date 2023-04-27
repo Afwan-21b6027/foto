@@ -48,9 +48,9 @@
             <label for="nav-button" class="press-button"><p style="text-align: center; padding-top: 7px">Navigation</p></label>
             <div class="small-nav-bar">
                 <ul >
-                    <li><a>User Profile</a></li>
-                    <li><a>About US</a></li>
-                    <li><a>Logout</a></li>
+                    <li><a rel="User Profile" href="user_profile.php">User Profile</a></li>
+                    <li><a rel="About Us" href="about_us.html">About US</a></li>
+                    <li><a rel="Logout" href="registration_page.html">Logout</a></li>
                 </ul>
             </div>
             <hr style="background-color: #595552; height: 1px; border-color: 2px solid#595552; margin-left: 20px; margin-right: 20px;">
