@@ -135,38 +135,43 @@ mysqli_close($conn);
         <div class="grid-container-bottom">
 
             <?php
+        // Establish a database connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $dir = "uploads";
-            // Collects files in directory and Array to store image data 
-            $images = glob("$dir/*.*"); 
-            $imageData = array();
-        
-            // Loop through each image and get its upload time
-            foreach ($images as $image) {
-                $imageData[$image] = filemtime($image); // Store image data with file path as key and upload time as value
-            }
-            
-            // Sort the image data array by upload time in descending order
-            arsort($imageData);
-            foreach ($imageData as $image => $caption) {
-                
-                // $caption = $_POST["caption"];
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // SQL SELECT statement to retrieve caption column data
+        $sql = "SELECT file_name,caption FROM uploaded_images";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                $caption23 = $row["caption"];
                 echo '
                 <div class="polaroid">
                     <div class="pol-img">
-                        <img id="myImg1" src="' . $image . '" alt="' .$photo_caption. '">
+                        <img id="myImg1" src="'.$row["file_name"].'" alt="' . $caption23 . '">
                         <div id="myModal" class="modal">
                             <span class="close">&times;</span>
                             <img class="modal-content" id="img01">
-                            <div id="caption">'. $photo_caption.'</div>
+                            <div id="caption">'. $caption23 .'</div>
                         </div>
                     </div>
                     <div class="caption">
-                        <p>' . $photo_caption . '</p>
+                        <p>' . $caption23 . '</p>
                     </div>
                 </div>';
             }
+        } else {
+            echo "0 results";
+        }
 
+        $conn->close();
             function getUsernameForImage($image) {
                 // replace this function with our own implementation that returns the username associated with the given image file
                 }
