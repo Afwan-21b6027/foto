@@ -7,6 +7,22 @@
     <title>Main page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          // Fetch data from PHP script using AJAX
+          $.getJSON('trend.php', function(data) {
+            // Create a table to display the data
+            var hashtag_trend = '<div>';
+            $.each(data, function(index, row) {
+              hashtag_trend = '<p style="margin: 0px; padding-bottom: 0;"><i>' + '#' + row.hashtags + '</p></i>';
+            });
+            hashtag_trend += '</div>';
+            // Add the table to the webpage
+            $('#hashtags-table').html(hashtag_trend);
+          });
+        });
+      </script>
 </head>
 <body>
 <!-- The main container that splits into three sections for large screen sizes -->
@@ -104,8 +120,7 @@
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     <div class="search-info">
-                        <p>- Use @ to search for users</p>
-                        <p>- Use # to search for tags</p>
+
                     </div>
                 </form>
                 <!-- TRENDS TAB -->
@@ -114,62 +129,25 @@
                 <div class="container-fluid">
                     <div id="carouselTrend" class="carousel slide d-flex align-items-center" data-bs-ride="carousel">
                         <div class="carousel-inner rounded" id="enlarge">
-                            <div class="carousel-item active" data-bs-interval="2500">
-                                <a href="#" class="image">
-                                    <img src="images/Photo by Jacob Colvin.jpg" id="photos" class="img-fluid" alt="photo1">
-                                    <p>#Nature</p>
-                                </a>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2500">
-                                <a href="#" class="image">
-                                    <img src="images/Photo by Matteo Badini.jpg" id="photos" class="img-fluid" alt="photo2">
-                                    <p>#Nature</p>
-                                </a>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2500">
-                                <a href="#" class="image">
-                                    <img src="images/Photo by Zetong Li.jpg" id="photos" class="img-fluid" alt="photo3">
-                                    <p>#Nature</p>
-                                </a>
-                            </div>
+                            <?php include('php/trends.php');?>
                         </div>
                     </div> 
                 </div>
-                
+                <div class="container-fluid">
+                    <div id="notifs">
+                        <h4 class="panel-heading mt-2">Trending Now</h4>
+                        <div id="hashtags-table">
+                            
+                        </div>
+                        <a href="input.html" style="text-decoration:underline; font-size:16px; ">Input current trend</a>
+                    </div>    
+                </div>
+
                 <!-- NOTIFS -->
                 <div class="container-fluid" >
                     <div id="carouselNotifs" class="carousel slide d-flex align-items-center" data-bs-ride="carousel">
                         <div class="carousel-inner rounded d-flex align-items-center">
-                            <div class="carousel-item active" id="gap" data-bs-interval="2500">
-                                <div id="notifs">Notification 1
-                                    <a href="#">
-                                        <div class="user_profile_info">                    
-                                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-                                            @example has joined
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2500">
-                                <div id="notifs">Notification 2
-                                    <a href="#">
-                                        <div class="user_profile_info">                    
-                                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-                                            @example has joined
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2500">
-                                <div id="notifs">Notification 3
-                                    <a href="#">
-                                        <div class="user_profile_info">                    
-                                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-                                            @example has joined
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            <?php include('php/notifications.php');?>
                         </div>
                     </div>
                 </div>
@@ -207,6 +185,26 @@
             });
         });
     });
-</script>    
+</script>
+
+<script>
+    function showHint(str){
+        if (str.length == 0) {
+            document.querySelector(".search-info").innerHTML = "";
+            return;
+        } else{
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.querySelector('.search-info').innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "php/search-ajax.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
