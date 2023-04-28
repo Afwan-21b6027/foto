@@ -29,11 +29,12 @@
     <div class="main-grid-container">
     <!-- The navigation bar starts here for large screen sizes -->
         <div class="grid-container-sidenav button">  
-            <ul >
+            <ul>
                 <!-- <li><a href="Mainpage.html">Home</a></li> -->
-                <li><a style="text-decoration: none; color: #000;" rel="User Profile" href="user_profile.php">User Profile</a></li>
+                <li><a style="text-decoration: none; color: #000;" rel="User Profile" href="registered_viewer.php">User Profile</a></li>
                 <li><a style="text-decoration: none; color: #000;" rel="About Us" href="about_us.html">About Us</a></li>
-                <li><a style="text-decoration: none; color: #000;" rel="Logout" href="registration_page.html">Logout</a></li>
+                <li><a style="text-decoration: none; color: #000;" rel="Logout" href="logout.php">Logout</a></li>
+                <!-- Note from Afwan: I do not have logout.php so I assume you have it.  -->
             </ul>
             
         </div>
