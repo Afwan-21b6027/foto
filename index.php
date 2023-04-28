@@ -23,6 +23,7 @@
           });
         });
       </script>
+      <!-- This is a comment -->
 </head>
 <body>
 <!-- The main container that splits into three sections for large screen sizes -->
